@@ -10,7 +10,7 @@ function displayChristmasCountdown() {
 
     // Calculate the days difference and display it
     const daysUntilChristmas = Math.ceil((christmasDate - today) / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerText = `${daysUntilChristmas} days until Christmas!`;
+    document.getElementById("countdown").innerText = `${daysUntilChristmas} days left!!`;
 }
 
 // Function to create a snowflake element
@@ -27,9 +27,14 @@ function createSnowflake() {
     setTimeout(() => snowflake.remove(), 8000);
 }
 
-// Function to start creating snowflakes at intervals
+// Function to start snowfall for a limited time (7 seconds)
 function startSnowfall() {
-    setInterval(createSnowflake, 100); // Adjust the interval for density
+    const snowInterval = setInterval(createSnowflake, 100); // Adjust the interval for density
+
+    // Stop creating snowflakes after 3 seconds
+    setTimeout(() => {
+        clearInterval(snowInterval);
+    }, 3000);
 }
 
 // Initialize functions on page load
